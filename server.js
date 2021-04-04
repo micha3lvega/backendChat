@@ -7,8 +7,12 @@ const port = 3000;
 app.use(route);
 
 route.get("/", function(req,res) {
-    res.send("Hola mundo");
-})
+    res.send("Hola mundo -- protocolo get");
+});
+
+route.post("/", function(req,res) {
+    res.send("Hola mundo -- protocolo post");
+});
 
 app.listen(port, () => console.log('Example app listening on port %d!!!', port));
 
