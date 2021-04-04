@@ -11,6 +11,7 @@ const log4js = require('log4js');
 const app = express();
 
 var indexRoute = require('./middleware/index');
+log4js.configure('./config/log4js.json');
 app.use('/', indexRoute);
 
 const port = process.env.PORT || 3000;
