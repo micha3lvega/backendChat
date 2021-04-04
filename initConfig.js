@@ -9,6 +9,10 @@ require('dotenv').config({
 const log4js = require('log4js');
 
 const app = express();
+
+var indexRoute = require('./middleware/index');
+app.use('/', indexRoute);
+
 const port = process.env.PORT || 3000;
 
 exports.app = app;
