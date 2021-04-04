@@ -1,6 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
+router.use(function timeLog(req, res, next) {
+
+    var startTime = Date.now();
+
+    next();
+
+    var durationinMilliseconds = Date.now() - startTime;
+
+    console.log('Duracion de la llamada: %d Milisegundos', durationinMilliseconds);
+    console.log('Duracion de la llamada: %d Segundos', (durationinMilliseconds / 1000));
+
+});
+
 router.get("/", function (req, res) {
     res.send("Hola mundo -- protocolo get");
 });
