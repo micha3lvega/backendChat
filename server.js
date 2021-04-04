@@ -14,5 +14,13 @@ route.post("/", function(req,res) {
     res.send("Hola mundo -- protocolo post");
 });
 
+route.put("/", function(req,res) {
+    res.send("Hola mundo -- protocolo put");
+});
+
+route.delete("/", function(req,res) {
+    res.send("Hola mundo -- protocolo delete");
+});
+
 app.listen(port, () => console.log('Example app listening on port %d!!!', port));
 
