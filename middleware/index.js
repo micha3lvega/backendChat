@@ -19,19 +19,23 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get("/", function (req, res) {
-    res.send("Hola mundo -- protocolo get");
+    logger.debug("Parámetros recibidos: ", req.query);
+    res.send("Mensaje " + req.query.message);
 });
 
 router.post("/", function (req, res) {
-    res.send("Hola mundo -- protocolo post");
+    logger.debug("body recibido: ", req.body);
+    res.send("Mensaje: " + req.body.message + " añadido correctamente");
 });
 
 router.put("/", function (req, res) {
-    res.send("Hola mundo -- protocolo put");
+    logger.debug("body recibido: ", req.body);
+    res.send("Mensaje: " + req.body.message + " actualizado correctamente");
 });
 
 router.delete("/", function (req, res) {
-    res.send("Hola mundo -- protocolo delete");
+    logger.debug("body recibido: ", req.body);
+    res.send("Mensaje: " + req.body.message + " eliminado correctamente");
 });
 
 module.exports = router;
