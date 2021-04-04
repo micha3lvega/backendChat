@@ -1,13 +1,10 @@
-var initConfig = require('./initConfig');
-
-var logger = initConfig.log4js;
-logger.level = process.env.LOG_LEVEL || 'ALL';
+const initConfig = require('./initConfig');
 
 const app = initConfig.app;
 const port = initConfig.port;
 
-var indexRoute = require('./middleware/index');
-app.use('/', indexRoute);
+const log4js = initConfig.log4js;
+var logger = log4js.getLogger('server.js');
+logger.level = process.env.LOG_LEVEL || 'ALL';
 
-const port = initConfig.port;
-initConfig.app.listen(port, () => logger.info('Example app listening on port %d!!!', port));
+app.listen(port, () => logger.info('Example app listening on port %d!!!', port));
