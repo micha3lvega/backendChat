@@ -1,10 +1,11 @@
-const express = require('express');
-const route = express.Router();
-
-const app = express();
-const port = 3000;
+var initConfig = require('./initConfig');
 
 var indexRoute = require('./middleware/index');
-app.use('/', indexRoute);
+initConfig.app.use('/', indexRoute);
 
-app.listen(port, () => console.log('Example app listening on port %d!!!', port));
+const logger = initConfig.log4js.getLogger('server.js');
+logger.level = process.env.LOG_LEVEL || 'ALL';
+
+const port = initConfig.port;
+
+initConfig.app.listen(port, () => logger.info('Example app listening on port %d!!!', port));
