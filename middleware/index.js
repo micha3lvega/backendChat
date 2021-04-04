@@ -1,3 +1,4 @@
+// Inicializar express
 var express = require('express');
 var router = express.Router();
 
@@ -7,10 +8,8 @@ router.use(function timeLog(req, res, next) {
 
     next();
 
-    var durationinMilliseconds = Date.now() - startTime;
-
-    console.log('Duracion de la llamada: %d Milisegundos', durationinMilliseconds);
-    console.log('Duracion de la llamada: %d Segundos', (durationinMilliseconds / 1000));
+    var durationMilliseconds = Date.now() - startTime;
+    console.log('Duración de la llamada: %d Segundos', (durationMilliseconds / 1000));
 
 });
 
