@@ -9,12 +9,15 @@ logger.level = process.env.LOG_LEVEL || 'ALL';
 
 router.use(function timeLog(req, res, next) {
 
+    logger.info(`[[start]] (timeLog) ${new Date().toLocaleString({
+        timeZone: process.env.TZ || 'America/Bogota'
+    })}`);
     var startTime = Date.now();
 
     next();
 
     var durationMilliseconds = Date.now() - startTime;
-    logger.debug('Duración de la llamada: %d Segundos', (durationMilliseconds / 1000));
+    logger.debug(`Duración de la llamada: %d Segundos a la pagina ${req.url}`, (durationMilliseconds / 1000));
 
 });
 
