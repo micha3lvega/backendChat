@@ -2,6 +2,11 @@
 var express = require('express');
 var router = express.Router();
 
+const log4js = require('log4js');
+var logger = log4js.getLogger('middleware-index.js');
+log4js.configure('./config/log4js.json');
+logger.level = process.env.LOG_LEVEL || 'ALL';
+
 router.use(function timeLog(req, res, next) {
 
     var startTime = Date.now();
@@ -9,7 +14,7 @@ router.use(function timeLog(req, res, next) {
     next();
 
     var durationMilliseconds = Date.now() - startTime;
-    console.log('Duración de la llamada: %d Segundos', (durationMilliseconds / 1000));
+    logger.debug('Duración de la llamada: %d Segundos', (durationMilliseconds / 1000));
 
 });
 
