@@ -1,8 +1,13 @@
 const express = require('express');
 const route = express.Router();
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+require('dotenv').config({
+    path: `./env/${NODE_ENV}.env`
+});
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 var indexRoute = require('./middleware/index');
 app.use('/', indexRoute);
