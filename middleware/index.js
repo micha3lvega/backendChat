@@ -34,7 +34,7 @@ router.post("/", function (req, res) {
 
 router.put("/", function (req, res) {
     logger.debug("body recibido: ", req.body);
-    res.json({
+    res.status(200).json({
         "error": null,
         "body": "Mensaje: " + req.body.message + " actualizado correctamente"
     });
