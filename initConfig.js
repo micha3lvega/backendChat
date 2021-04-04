@@ -1,5 +1,4 @@
 const express = require('express');
-const route = express.Router();
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 require('dotenv').config({
@@ -9,6 +8,10 @@ require('dotenv').config({
 const log4js = require('log4js');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 
 var indexRoute = require('./middleware/index');
 log4js.configure('./config/log4js.json');
