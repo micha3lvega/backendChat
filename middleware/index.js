@@ -20,6 +20,7 @@ router.use(function timeLog(req, res, next) {
 
 router.get("/", function (req, res) {
     logger.debug("Parámetros recibidos: ", req.query);
+    logger.debug("Headers recibidos: ", req.headers);
     res.send("Mensaje " + req.query.message);
 });
 
