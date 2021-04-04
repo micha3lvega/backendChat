@@ -22,19 +22,22 @@ router.get("/", function (req, res) {
     logger.debug("Parámetros recibidos: ", req.query);
     logger.debug("Headers recibidos: ", req.headers);
     res.header({
-        "customHeader":"header personalizado"
+        "customHeader": "header personalizado"
     })
     res.send("Mensaje " + req.query.message);
 });
 
 router.post("/", function (req, res) {
     logger.debug("body recibido: ", req.body);
-    res.send("Mensaje: " + req.body.message + " añadido correctamente");
+    res.send("Mensaje: " + req.body.message + " añadido correctamente", 201);
 });
 
 router.put("/", function (req, res) {
     logger.debug("body recibido: ", req.body);
-    res.send("Mensaje: " + req.body.message + " actualizado correctamente");
+    res.json({
+        "error": null,
+        "body": "Mensaje: " + req.body.message + " actualizado correctamente"
+    });
 });
 
 router.delete("/", function (req, res) {
